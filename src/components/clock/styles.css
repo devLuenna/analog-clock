@@ -1,6 +1,6 @@
 .clock-face {
-    width: 180px;
-    height: 180px;
+    width: calc(var(--clock-radius) * 2);
+    height: calc(var(--clock-radius) * 2);
     border-radius: 50%;
     position: relative;
     border: 1px solid var(--white);
@@ -13,12 +13,11 @@
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    width: 3px;
-    height: 3px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background-color: var(--white);
 }
-
 
 .clock-face__number {
     position: absolute;
@@ -27,9 +26,23 @@
     translate: -50% 0;
     transform-origin: top;
     width: 1px;
-    height: calc(90px - 10px);
+    height: calc(var(--clock-radius) - 10px);
     display: flex;
     justify-content: center;
     align-items: flex-end;
     color: var(--white);
+}
+
+.clock-hand {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% 0;
+    transform-origin: top;
+}
+
+.clock-hand__hour {
+    width: 2px;
+    height: calc(var(--clock-radius) - 45px);
+    background-color: var(--white);
 }
