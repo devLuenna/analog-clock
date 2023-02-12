@@ -7,7 +7,7 @@
     --segment-height: 5px;
 }
 
-.app {
+.clock-container {
     height: 100vh;
     display: flex;
     flex-direction: column;

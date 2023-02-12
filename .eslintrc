@@ -19,6 +19,7 @@
         "ignoreComments": true
       }
     ],
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "object-curly-spacing": "off"
   }
 }

@@ -1,9 +1,10 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Clock from './components/clock';
+import { DateProvider, useDateContext } from './contexts/date.provider';
 
-export default function App() {
-  const [date, setDate] = useState(new Date());
+const ClockPage = () => {
+  const { date, setDate } = useDateContext();
 
   const time = {
     hours: date.getHours(),
@@ -22,8 +23,16 @@ export default function App() {
   }, []);
 
   return (
-    <section className="app">
+    <section className="clock-container">
       <Clock time={time} />
     </section>
+  );
+};
+
+export default function App() {
+  return (
+    <DateProvider>
+      <ClockPage />
+    </DateProvider>
   );
 }
