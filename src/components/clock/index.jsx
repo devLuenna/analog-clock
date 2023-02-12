@@ -1,11 +1,11 @@
 import React from 'react';
 import './styles.css';
 import { CIRCLE_DEGREES } from '../../constants';
-import { getHourDegree, getMinuteDegree, getSecondDegree } from '../../utils';
+import { getHourDegree, getMinuteDegree, getNumberDegree, getSecondDegree } from '../../utils';
 
 const ClockNumber = ({ value }) => (
   <div className="clock-face__number" style={{ rotate: `${(CIRCLE_DEGREES / 12) * (value - 1) + 210}deg` }}>
-    <span style={{ rotate: `-${(CIRCLE_DEGREES / 12) * (value - 1) + 210}deg` }}>{value}</span>
+    <span style={{ rotate: `-${getNumberDegree(value)}deg` }}>{value}</span>
   </div>
 );
 
@@ -23,16 +23,11 @@ const ClockFace = ({ children }) => {
 };
 
 const HourHand = ({ hours, minutes }) => (
-  <div
-    className="clock-hand clock-hand__hour"
-    style={{
-      rotate: `${getHourDegree(hours, minutes)}deg`,
-    }}
-  />
+  <div className="clock-hand clock-hand__hour" style={{ rotate: `${getHourDegree(hours, minutes)}deg` }} />
 );
 
-const MinuteHand = ({ minutes }) => (
-  <div className="clock-hand clock-hand__minute" style={{ rotate: `${getMinuteDegree(minutes)}deg` }} />
+const MinuteHand = ({ minutes, seconds }) => (
+  <div className="clock-hand clock-hand__minute" style={{ rotate: `${getMinuteDegree(minutes, seconds)}deg` }} />
 );
 
 const SecondHand = ({ seconds }) => (
@@ -44,7 +39,7 @@ const Clock = ({ time }) => {
   return (
     <ClockFace>
       <HourHand hours={hours} minutes={minutes} />
-      <MinuteHand minutes={minutes} />
+      <MinuteHand minutes={minutes} seconds={seconds} />
       <SecondHand seconds={seconds} />
     </ClockFace>
   );
