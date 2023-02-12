@@ -1,60 +1,75 @@
 .clock-face {
-    width: calc(var(--clock-radius) * 2);
-    height: calc(var(--clock-radius) * 2);
-    border-radius: 50%;
-    position: relative;
-    border: 1px solid var(--white);
+  width: calc(var(--clock-radius) * 3);
+  height: calc(var(--clock-radius) * 3);
+  border-radius: 50%;
+  position: relative;
+  border: 1px solid var(--white);
+  position: static;
 }
 
 .clock-face::after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background-color: var(--white);
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--white);
 }
 
 .clock-face__number {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% 0;
-    transform-origin: top;
-    width: 1px;
-    height: calc(var(--clock-radius) - 10px);
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    color: var(--white);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% 0;
+  transform-origin: top;
+  width: 1px;
+  height: calc(var(--clock-radius) * 1.5 - 10px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  color: var(--white);
+  font-size: 20px;
 }
 
 .clock-hand {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% 0;
-    transform-origin: top;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% 0;
+  transform-origin: top;
 }
 
 .clock-hand__hour {
-    width: 4px;
-    height: calc(var(--clock-radius) - 50px);
-    background-color: var(--white);
+  width: 4px;
+  height: calc(var(--clock-radius) * 1.5 - 65px);
+  background-color: var(--white);
 }
 
 .clock-hand__minute {
-    width: 2px;
-    height: calc(var(--clock-radius) - 35px);
-    background-color: var(--white);
+  width: 3px;
+  height: calc(var(--clock-radius) * 1.5 - 40px);
+  background-color: var(--white);
 }
 
 .clock-hand__second {
-    width: 2px;
-    height: calc(var(--clock-radius) - 25px);
-    background-color: var(--pink);
+  width: 2px;
+  height: calc(var(--clock-radius) * 1.5 - 30px);
+  background-color: var(--pink);
+}
+
+.tooltip-container {
+  display: none;
+}
+
+.clock-face:hover .tooltip-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  z-index: 10;
 }

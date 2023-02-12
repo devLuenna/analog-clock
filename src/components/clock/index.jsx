@@ -2,6 +2,8 @@ import React from 'react';
 import './styles.css';
 import { CIRCLE_DEGREES } from '../../constants';
 import { getHourDegree, getMinuteDegree, getNumberDegree, getSecondDegree } from '../../utils';
+import Tooltip from '../tooltip';
+import useMousePosition from '../../hooks/useMousePosition';
 
 const ClockNumber = ({ value }) => (
   <div className="clock-face__number" style={{ rotate: `${(CIRCLE_DEGREES / 12) * (value - 1) + 210}deg` }}>
@@ -9,11 +11,11 @@ const ClockNumber = ({ value }) => (
   </div>
 );
 
-const ClockFace = ({ children }) => {
+const ClockFace = ({ children, onMouseMove }) => {
   const clockNumbers = Array.from({ length: 12 }, (v, i) => i + 1);
 
   return (
-    <div className="clock-face">
+    <div className="clock-face" onMouseMove={onMouseMove}>
       {clockNumbers.map((number) => (
         <ClockNumber key={number} value={number} />
       ))}
@@ -36,11 +38,21 @@ const SecondHand = ({ seconds }) => (
 
 const Clock = ({ time }) => {
   const { hours, minutes, seconds } = time;
+  const { position, handlePosition } = useMousePosition();
+
   return (
-    <ClockFace>
+    <ClockFace onMouseMove={handlePosition}>
       <HourHand hours={hours} minutes={minutes} />
       <MinuteHand minutes={minutes} seconds={seconds} />
       <SecondHand seconds={seconds} />
+      <div
+        className="tooltip-container"
+        style={{
+          left: `${position.x + 5}px`,
+          top: `${position.y - 35}px`,
+        }}>
+        <Tooltip message={`${hours}:${minutes}:${seconds}`} />
+      </div>
     </ClockFace>
   );
 };
