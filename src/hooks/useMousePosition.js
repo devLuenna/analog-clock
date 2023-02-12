@@ -7,7 +7,6 @@ const useMousePosition = () => {
     const mouseX = e.clientX;
     const mouseY = e.clientY;
 
-    console.log('handlePosition', mouseX, mouseY);
     setPosition({ x: mouseX, y: mouseY });
   };
 
