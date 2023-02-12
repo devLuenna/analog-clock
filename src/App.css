@@ -1,0 +1,17 @@
+:root {
+    --white: #fff;
+    --black: #202023;
+    --analog-clock-radius: 90px;
+    --segment-width: 25px;
+    --segment-height: 5px;
+}
+
+.app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    background-color: var(--black);
+}
