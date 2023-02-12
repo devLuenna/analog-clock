@@ -2,10 +2,15 @@ import './App.css';
 import Clock from './components/clock';
 
 export default function App() {
-  const time = new Date();
+  const today = new Date();
+  const time = {
+    hours: today.getHours(),
+    minutes: today.getMinutes(),
+    seconds: today.getSeconds(),
+  };
   return (
-    <div className="app">
+    <section className="app">
       <Clock time={time} />
-    </div>
+    </section>
   );
 }

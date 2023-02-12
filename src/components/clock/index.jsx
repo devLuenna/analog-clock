@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css';
 import { CIRCLE_DEGREES } from '../../constants';
-import { getHourDegree } from '../../utils';
+import { getHourDegree, getMinuteDegree, getSecondDegree } from '../../utils';
 
 const ClockNumber = ({ value }) => (
   <div className="clock-face__number" style={{ rotate: `${(CIRCLE_DEGREES / 12) * (value - 1) + 210}deg` }}>
@@ -31,11 +31,21 @@ const HourHand = ({ hours, minutes }) => (
   />
 );
 
+const MinuteHand = ({ minutes }) => (
+  <div className="clock-hand clock-hand__minute" style={{ rotate: `${getMinuteDegree(minutes)}deg` }} />
+);
+
+const SecondHand = ({ seconds }) => (
+  <div className="clock-hand clock-hand__second" style={{ rotate: `${getSecondDegree(seconds)}deg` }} />
+);
+
 const Clock = ({ time }) => {
-  console.log('time', time);
+  const { hours, minutes, seconds } = time;
   return (
     <ClockFace>
-      <HourHand hours={time.hours} minutes={time.minutes} />
+      <HourHand hours={hours} minutes={minutes} />
+      <MinuteHand minutes={minutes} />
+      <SecondHand seconds={seconds} />
     </ClockFace>
   );
 };

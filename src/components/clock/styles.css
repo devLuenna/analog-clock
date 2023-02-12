@@ -42,7 +42,19 @@
 }
 
 .clock-hand__hour {
-    width: 2px;
-    height: calc(var(--clock-radius) - 45px);
+    width: 4px;
+    height: calc(var(--clock-radius) - 50px);
     background-color: var(--white);
+}
+
+.clock-hand__minute {
+    width: 2px;
+    height: calc(var(--clock-radius) - 35px);
+    background-color: var(--white);
+}
+
+.clock-hand__second {
+    width: 2px;
+    height: calc(var(--clock-radius) - 25px);
+    background-color: var(--pink);
 }
