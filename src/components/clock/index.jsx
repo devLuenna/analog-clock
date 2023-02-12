@@ -51,7 +51,12 @@ const Clock = ({ time }) => {
           left: `${position.x + 5}px`,
           top: `${position.y - 35}px`,
         }}>
-        <Tooltip message={`${hours}:${minutes}:${seconds}`} />
+        <Tooltip
+          message={`${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(
+            2,
+            '0',
+          )}`}
+        />
       </div>
     </ClockFace>
   );

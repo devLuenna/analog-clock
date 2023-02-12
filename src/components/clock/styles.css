@@ -2,7 +2,6 @@
   width: calc(var(--clock-radius) * 3);
   height: calc(var(--clock-radius) * 3);
   border-radius: 50%;
-  position: relative;
   border: 1px solid var(--white);
   position: static;
 }
@@ -69,7 +68,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
+  width: 120px;
   position: absolute;
   z-index: 10;
 }
